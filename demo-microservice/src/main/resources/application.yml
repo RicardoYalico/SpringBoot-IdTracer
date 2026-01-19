@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: demo-microservice
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  file:
+    name: logs/${spring.application.name}.log
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    root: INFO
+    com.example: INFO
